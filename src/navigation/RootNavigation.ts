@@ -3,15 +3,15 @@ import {
     StackActions,
     CommonActions,
 } from '@react-navigation/native';
-import { AuthStackParamList } from '@/types/Navigation';
+import { AuthStackParamList, RootStackParamList } from '@/types/Navigation';
 
 // Create a type-safe navigation reference
-export const navigationRef = createNavigationContainerRef<AuthStackParamList>();
+export const navigationRef = createNavigationContainerRef<RootStackParamList>()
 
 // Generic navigation function
-export function navigate<RouteName extends keyof AuthStackParamList>(
+export function navigate<RouteName extends keyof RootStackParamList>(
     name: RouteName,
-    params?: AuthStackParamList[RouteName]
+    params?: RootStackParamList[RouteName]
 ) {
     if (navigationRef.isReady()) {
         navigationRef.navigate(name, params);

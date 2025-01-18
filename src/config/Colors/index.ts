@@ -15,6 +15,7 @@ export const Colors = {
   },
   common: {
     black: "#000000",
+    grey:'#959396',
     white: "#ffffff",
   },
   background: {

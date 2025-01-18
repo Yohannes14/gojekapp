@@ -12,7 +12,7 @@ const AppNavigator: React.FC = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer ref={navigationRef}>
-        {loggedInUser ? <RootStack /> : <AuthStack />}
+        { <RootStack /> }
       </NavigationContainer>
     </SafeAreaProvider>
   );

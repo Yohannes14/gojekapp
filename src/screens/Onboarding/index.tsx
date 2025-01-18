@@ -17,6 +17,9 @@ import { Colors } from "@/config/Colors";
 import { FONT } from "@/utils/fonts";
 import OnboardingItem from "@/components/OnBoardingItem";
 import { onboardingData } from "@/utils/data/onboardingData";
+import { navigate } from "@/navigation/RootNavigation";
+import { REGISTER } from "@/navigation/constants";
+import { globalStyles } from "@/styles/GlobalStyles";
 
 const { width } = Dimensions.get("window");
 
@@ -32,10 +35,10 @@ export default function OnBoardingScreen() {
         setCurrentIndex(index);
     };
 
-   
+
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={globalStyles.container}>
             {/* Header */}
             <View style={styles.header}>
                 <Image source={Images.logo1} style={styles.logo} />
@@ -70,7 +73,7 @@ export default function OnBoardingScreen() {
 
                 {/* Buttons */}
                 <CustomButton
-                    onPress={() => { }}
+                    onPress={() => { navigate(REGISTER) }}
                     style={{ marginVertical: 10, backgroundColor: Colors.button.primary }}
                     buttonStyle={{ marginVertical: 12, color: Colors.common.white }}
                     title="Log in"
@@ -78,7 +81,7 @@ export default function OnBoardingScreen() {
                     disabled={false}
                 />
                 <CustomButton
-                    onPress={() => { }}
+                    onPress={() => { navigate(REGISTER) }}
                     style={{ marginVertical: 10, backgroundColor: Colors.button.secondary, borderWidth: 1, borderColor: Colors.button.primary }}
                     buttonStyle={{ marginVertical: 12, color: Colors.button.primary }}
                     title="I'm new, sign me up"
@@ -92,14 +95,14 @@ export default function OnBoardingScreen() {
                         By logging in or registering, you agree to our{" "}
                         <Text
                             style={styles.link}
-                            onPress={() => Linking.openURL("https://example.com/terms")}
+                            onPress={() => Linking.openURL("https://www.google.com/")}
                         >
                             Terms of service
                         </Text>{" "}
                         and{" "}
                         <Text
                             style={styles.link}
-                            onPress={() => Linking.openURL("https://example.com/privacy")}
+                            onPress={() => Linking.openURL("https://www.google.com/")}
                         >
                             Privacy policy
                         </Text>.
@@ -111,12 +114,7 @@ export default function OnBoardingScreen() {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#FFFFFF",
-        paddingHorizontal: 20,
-        paddingVertical: 30,
-    },
+   
     header: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -130,21 +128,21 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         borderWidth: 0.5,
-        borderColor: "#DDDDDD",
+        borderColor: Colors.common.black,
         borderRadius: 20,
         paddingHorizontal: 10,
         paddingVertical: 5,
     },
     languageText: {
         fontSize: 14,
-        color: "#000000",
+        color: Colors.common.black,
         marginLeft: 2,
     },
     onboardingContent: {
         flex: 1,
         justifyContent: "flex-end",
     },
-   
+
     pagination: {
         flexDirection: "row",
         justifyContent: "center",
@@ -157,7 +155,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
     dotActive: {
-        backgroundColor: "#4CAF50",
+        backgroundColor: Colors.button.primary,
     },
     dotInactive: {
         backgroundColor: "#DDDDDD",
@@ -168,10 +166,10 @@ const styles = StyleSheet.create({
     },
     termsText: {
         fontSize: 14,
-        color: "#555555",
+        color: Colors.text.secondary,
     },
     link: {
-        color: "#4CAF50",
+        color: Colors.button.primary,
         fontWeight: "bold",
     },
 });
