@@ -20,6 +20,7 @@ import { VERIFICATION_METHOD } from '@/navigation/constants';
 import LoadingModal from '@/components/LoadingModel';
 import BottomSheet from '@/components/BottomSheet';
 import RBSheet from "react-native-raw-bottom-sheet";
+import CleanInputField from '@/components/CLeanInputField';
 
 
 export default function SignUpScreen() {
@@ -92,9 +93,7 @@ export default function SignUpScreen() {
                         accessibilityLabel="Phone number input"
                     />
                     {phoneNumber.length > 0 && (
-                        <TouchableOpacity onPress={clearPhoneNumber} style={styles.removeIcon}>
-                            <Ionicons name="close-circle" size={20} color={Colors.common.grey} />
-                        </TouchableOpacity>
+                        <CleanInputField onPress={clearPhoneNumber} />
                     )}
                 </View>
             </View>
@@ -173,8 +172,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     label: {
-        fontSize: 16,
-        color: Colors.text.primary,
+        fontSize: 14,
+        color: Colors.common.black,
         marginTop: 20,
         fontFamily: FONT.SEMI_BOLD
     },
@@ -204,7 +203,7 @@ const styles = StyleSheet.create({
     phoneInput: {
         fontSize: 16,
         paddingVertical: 10,
-        borderBottomWidth: 1,
+        borderBottomWidth: 0.8,
         borderColor: Colors.common.black,
         paddingRight: 30,
     },
@@ -235,10 +234,10 @@ const styles = StyleSheet.create({
     phoneButton: {
         alignSelf: 'flex-start',
         borderWidth: 0.5,
-        borderColor: Colors.common.black,
+        borderColor: Colors.common.grey,
         borderRadius: 24,
         paddingHorizontal: 15,
-        paddingVertical: 8,
+        paddingVertical: 10,
         marginTop: 20,
         marginBottom: 30,
     },

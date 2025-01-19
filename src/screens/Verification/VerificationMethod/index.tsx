@@ -1,22 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Alert,
     StyleSheet,
     Text,
     View,
     Linking,
-
+    Modal,
+    ActivityIndicator,
 } from 'react-native';
 import { globalStyles } from '@/styles/GlobalStyles';
 import CustomHeader from '@/components/CustomHeader';
-import { goBack } from '@/navigation/RootNavigation';
+import { goBack, navigate } from '@/navigation/RootNavigation';
 import { FONT } from '@/utils/fonts';
 import { Colors } from '@/config/Colors';
 import { Images } from '@/assets/images';
 import VerificationOption from '@/components/VerificationOption';
-
+import { VERIFICATION_WITH_OTP } from '@/navigation/constants';
+import LoadingModal from '@/components/LoadingModel';
 
 const VerificationMethodScreen: React.FC = () => {
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const handleVerificationOptionSelect = (method: string) => {
+        setModalVisible(true); // Show loading modal
+
+        setTimeout(() => {
+            setModalVisible(false); // Hide modal
+            if (method === 'sms') {
+                navigate(VERIFICATION_WITH_OTP); // Navigate to OTP screen
+            } else {
+                Alert.alert('Selected', 'OTP via WhatsApp is selected.');
+            }
+        }, 2000); // Simulate API call or processing time
+    };
+
     return (
         <View style={globalStyles.container}>
             <CustomHeader
@@ -28,12 +45,12 @@ const VerificationMethodScreen: React.FC = () => {
                 <VerificationOption
                     icon={Images.sms}
                     label="OTP via SMS"
-                    onPress={() => Alert.alert('Selected', 'OTP via SMS')}
+                    onPress={() => handleVerificationOptionSelect('sms')}
                 />
                 <VerificationOption
                     icon={Images.whatsApp}
                     label="OTP via WhatsApp"
-                    onPress={() => Alert.alert('Selected', 'OTP via WhatsApp')}
+                    onPress={() => handleVerificationOptionSelect('whatsapp')}
                 />
             </View>
             <View style={styles.termsWrapper}>
@@ -45,6 +62,9 @@ const VerificationMethodScreen: React.FC = () => {
                     goto
                 </Text>
             </View>
+
+            {/* Loading Modal */}
+            <LoadingModal visible={modalVisible} />
         </View>
     );
 };

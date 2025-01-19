@@ -30,6 +30,16 @@ interface VerificationOptionProps {
     onPress: () => void;
 }
 
+interface InputFieldProps {
+    label: string;
+    value: string;
+    onChangeText: (text: string) => void;
+    placeholder: string;
+    isValid: boolean;
+    keyboardType?: 'default' | 'email-address' | 'phone-pad';
+    secureTextEntry?: boolean;
+    errorMessage?: string;
+};
 
 
-export type { OnboardingItemProps, CustomButtonProps, LoadingModalProps, BottomSheetProps, VerificationOptionProps };
+export type { OnboardingItemProps, CustomButtonProps, LoadingModalProps, BottomSheetProps, VerificationOptionProps, InputFieldProps }

@@ -27,16 +27,17 @@ const CustomButton: React.FC<CustomButtonProps> = ({
             onPress={onPress}
             disabled={disabled}
         >
-            {/* {loading && (
-        <ActivityIndicator
-          color={theme.white}
-          style={{
-            marginRight: 8,
-          }}
-        />
-      )} */}
+            {loading ? (
+                <ActivityIndicator
+                    color={Colors.common.white}
+                    style={{
+                        marginVertical: 10,
+                    }}
+                />
+            ) : (
 
-            <Text style={[styles.button, buttonStyle]}>{title}</Text>
+                <Text style={[styles.button, buttonStyle]}>{title}</Text>
+            )}
         </CustomPressable>
     );
 };
