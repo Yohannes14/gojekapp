@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, ActivityIndicator } from 'react-native';
 import CustomButton from '@/components/Button/CustomButton';
 import { Images } from '@/assets/images';
 import { Colors } from '@/config/Colors';
-import { REGISTER } from '@/navigation/constants';
+import { PRE_HOME, REGISTER } from '@/navigation/constants';
 import { navigate } from '@/navigation/RootNavigation';
 import { globalStyles } from '@/styles/GlobalStyles';
 import { FONT } from '@/utils/fonts';
@@ -19,7 +19,7 @@ export default function OpenLocation() {
 
     const handleButtonClick = () => {
         setButtonClicked(true);
-        setTimeout(() => navigate(REGISTER), 3000);
+        setTimeout(() => navigate(PRE_HOME), 2000);
     };
 
     return (

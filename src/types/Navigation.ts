@@ -1,5 +1,9 @@
 export type AuthStackParamList = {
   welcome: undefined;
+  home: undefined;
+  promo: undefined;
+  activity: undefined;
+  chat: undefined;
 };
 
 export type RootStackParamList = {
@@ -7,7 +11,8 @@ export type RootStackParamList = {
   register: undefined;
   verificationMethod: undefined;
   verficationWithOtp: undefined;
-  nameAndEmail:undefined;
-  openLocation:undefined;
-  home: undefined;
+  nameAndEmail: undefined;
+  openLocation: undefined;
+  preHome: undefined;
+  homeTabs:undefined;
 };
