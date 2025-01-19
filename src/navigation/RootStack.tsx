@@ -1,6 +1,6 @@
 // RootStack.tsx or Navigator.tsx
 import React from 'react';
-import {  NAME_EMAIL,  ONBOARDING, REGISTER, VERIFICATION_METHOD, VERIFICATION_WITH_OTP } from './constants';  // Import the constants
+import { LOCATION, NAME_EMAIL, ONBOARDING, REGISTER, VERIFICATION_METHOD, VERIFICATION_WITH_OTP } from './constants';  // Import the constants
 import { RootStackParamList } from '@/types/Navigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '@/screens/Home';
@@ -9,6 +9,7 @@ import SignUpScreen from '@/screens/SignUp';
 import VerificationMethodScreen from '@/screens/Verification/VerificationMethod';
 import VerficationWithOptScreen from '@/screens/Verification/VerificationWithOTP';
 import NameAndEMailFormScreen from '@/screens/NameAndEmailIForm';
+import OpenLocation from '@/screens/Location';
 
 const RootStack = (): React.ReactElement => {
     const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -20,6 +21,7 @@ const RootStack = (): React.ReactElement => {
             <Stack.Screen name={VERIFICATION_METHOD} component={VerificationMethodScreen} />
             <Stack.Screen name={VERIFICATION_WITH_OTP} component={VerficationWithOptScreen} />
             <Stack.Screen name={NAME_EMAIL} component={NameAndEMailFormScreen} />
+            <Stack.Screen name={LOCATION} component={OpenLocation} />
         </Stack.Navigator>
     );
 };

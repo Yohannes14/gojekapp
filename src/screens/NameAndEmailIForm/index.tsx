@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, Text, TextInput, View } from 'react-native';
 import { globalStyles } from '@/styles/GlobalStyles';
 import CustomHeader from '@/components/CustomHeader';
-import { goBack } from '@/navigation/RootNavigation';
+import { goBack, navigate } from '@/navigation/RootNavigation';
 import { Colors } from '@/config/Colors';
 import { FONT } from '@/utils/fonts';
 import CustomButton from '@/components/Button/CustomButton';
-import { Ionicons } from '@expo/vector-icons';
 import CleanInputField from '@/components/CLeanInputField';
+import { LOCATION } from '@/navigation/constants';
 
 export default function NameAndEMailFormScreen() {
     const [name, setName] = useState('');
@@ -35,11 +35,10 @@ export default function NameAndEMailFormScreen() {
     };
 
     const handleNext = () => {
-        // Navigate to the next screen or perform any action
-        // Alert.alert("Success", "Email is valid");
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
+            navigate(LOCATION);
         }, 2000);
     };
 

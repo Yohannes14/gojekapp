@@ -6,4 +6,5 @@ export const Images = {
     sheetImg: require('@/assets/images/sheetImg.png'),
     whatsApp: require('@/assets/images/whatsapp.png'),
     sms: require('@/assets/images/sms.png'),
+    img1: require('@/assets/images/img1.png')
 }

@@ -6,4 +6,5 @@ export const REGISTER = "register";
 export const VERIFICATION_METHOD = "verificationMethod";
 export const VERIFICATION_WITH_OTP = "verficationWithOtp";
 export const NAME_EMAIL='nameAndEmail';
+export const LOCATION='openLocation';
 export const HOME = "home";

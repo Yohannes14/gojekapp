@@ -8,5 +8,6 @@ export type RootStackParamList = {
   verificationMethod: undefined;
   verficationWithOtp: undefined;
   nameAndEmail:undefined;
+  openLocation:undefined;
   home: undefined;
 };
