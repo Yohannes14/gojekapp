@@ -7,12 +7,14 @@ interface CustomHeaderProps {
     onBackPress: () => void;
     onHelpPress: () => void;
     onLanguagePress?: () => void;
+    isLanguageVisible?: boolean;
 }
 
 const CustomHeader: React.FC<CustomHeaderProps> = ({
     onBackPress,
     onHelpPress,
     onLanguagePress,
+    isLanguageVisible = false,
 }) => {
     return (
         <View style={styles.headerContainer}>
@@ -25,14 +27,15 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
             <View style={styles.rightContainer}>
                 <TouchableOpacity onPress={onHelpPress} style={styles.iconButton}>
                     <Entypo name="help-with-circle" size={24} color={Colors.common.black} />
-
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { onLanguagePress }} style={styles.languageButton}>
-
-                    <Ionicons name="language" size={24} />
-                    <Text style={styles.languageText}>English</Text>
                 </TouchableOpacity>
 
+                {/* Conditionally render the language button */}
+                {isLanguageVisible && (
+                    <TouchableOpacity onPress={onLanguagePress} style={styles.languageButton}>
+                        <Ionicons name="language" size={24} color={Colors.common.black} />
+                        <Text style={styles.languageText}>English</Text>
+                    </TouchableOpacity>
+                )}
             </View>
         </View>
     );
@@ -43,20 +46,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingTop: 20
+        paddingTop: 20,
     },
     iconButton: {
         paddingRight: 10,
     },
-
     rightContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
     languageButton: {
-        flexDirection: "row",
-        alignItems: "center",
+        flexDirection: 'row',
+        alignItems: 'center',
         borderWidth: 0.5,
         borderColor: Colors.common.black,
         borderRadius: 20,

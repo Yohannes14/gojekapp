@@ -7,11 +7,6 @@ import {
     View,
     Alert,
     Linking,
-    ActivityIndicator,
-    Modal,
-    Animated,
-    Dimensions,
-    Image,
 } from 'react-native';
 import CountryPicker, { Country, CountryCode } from 'react-native-country-picker-modal';
 import { globalStyles } from '@/styles/GlobalStyles';
@@ -21,11 +16,11 @@ import { FONT } from '@/utils/fonts';
 import { Colors } from '@/config/Colors';
 import CustomButton from '@/components/Button/CustomButton';
 import { Ionicons } from '@expo/vector-icons';
-import RBSheet from 'react-native-raw-bottom-sheet';
-import { REGISTER } from '@/navigation/constants';
-import { Images } from '@/assets/images';
+import { VERIFICATION_METHOD } from '@/navigation/constants';
+import LoadingModal from '@/components/LoadingModel';
+import BottomSheet from '@/components/BottomSheet';
+import RBSheet from "react-native-raw-bottom-sheet";
 
-const { height } = Dimensions.get('window');
 
 export default function SignUpScreen() {
     const [countryCode, setCountryCode] = useState<CountryCode>('US');
@@ -44,13 +39,11 @@ export default function SignUpScreen() {
         setTimeout(() => {
             setIsLoading(false);
             refRBSheet.current?.open();
-            // Alert.alert('Success', `Phone number: +${callingCode} ${phoneNumber}`);
         }, 2000);
     };
     const clearPhoneNumber = () => {
         setPhoneNumber('');
     };
-
 
 
     return (
@@ -60,9 +53,8 @@ export default function SignUpScreen() {
                 onBackPress={() => goBack()}
                 onHelpPress={() => Alert.alert('Help', 'Need help? Contact support!')}
                 onLanguagePress={() => Alert.alert('Language', 'Language selection coming soon!')}
+                isLanguageVisible={true}
             />
-
-            {/* Title Section */}
             <Text style={styles.title}>Welcome to Gojek!</Text>
             <Text style={styles.subtitle}>
                 Enter or create an account in a few easy steps.
@@ -145,82 +137,9 @@ export default function SignUpScreen() {
             </TouchableOpacity>
 
             {/* Modal for Loading */}
-            <Modal transparent visible={isLoading}>
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalContent}>
-                        <ActivityIndicator size="large" color={Colors.button.primary} />
-                    </View>
-                </View>
-            </Modal>
+            <LoadingModal visible={isLoading} />
             {/* Bottom Sheet Modal */}
-            <RBSheet
-                ref={refRBSheet}
-                height={450}
-                useNativeDriver={false}
-                openDuration={450}
-                customStyles={{
-                    container: {
-                        borderTopLeftRadius: 20,
-                        borderTopRightRadius: 20,
-                        paddingHorizontal: 40,
-                        paddingVertical:20,
-                        backgroundColor: Colors.common.white,
-                        position: 'relative', // Ensure relative positioning for the container
-                    },
-                }}
-                customModalProps={{
-                    animationType: 'slide',
-                    statusBarTranslucent: true,
-                }}
-                customAvoidingViewProps={{
-                    enabled: false,
-                }}
-            >
-                {/* Close Icon */}
-                <TouchableOpacity
-                    style={styles.closeIconContainer}
-                    onPress={() => refRBSheet.current?.close()}
-                >
-                    <Ionicons name="close-circle" size={28} color={Colors.common.grey} />
-                </TouchableOpacity>
-
-                {/* Sheet Content */}
-                <View style={{ justifyContent: 'center', alignItems: 'center', marginVertical:20 }}>
-                    <Image source={Images.sheetImg} style={{ height: 200, width: '90%' }} />
-                </View>
-                <Text style={styles.sheetText}>
-                    To continue, please agree to our terms and policies first
-                </Text>
-                <View style={styles.termsContainer}>
-                    <Text style={styles.termsText}>
-
-                        Read
-                        <Text
-                            style={styles.link}
-                            onPress={() => Linking.openURL("https://www.google.com/")}
-                        >
-                            Terms of Service
-                        </Text>{" "}
-                        &{" "}
-                        <Text
-                            style={styles.link}
-                            onPress={() => Linking.openURL("https://www.google.com/")}
-                        >
-                            Privacy Policy.
-                        </Text>.
-                    </Text>
-                </View>
-
-                <CustomButton
-                    onPress={() => { navigate(REGISTER) }}
-                    style={{ marginVertical: 4, backgroundColor: Colors.button.primary }}
-                    buttonStyle={{ marginVertical: 12, color: Colors.common.white }}
-                    title="I agree"
-                    loading={false}
-                    disabled={false}
-                />
-            </RBSheet>
-
+            <BottomSheet refRBSheet={refRBSheet} onAgree={() => navigate(VERIFICATION_METHOD)} />
 
             <View style={[styles.termsContainer, { flex: 1, marginTop: 10, flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-end' }]}>
                 <Text style={styles.termsText}>
@@ -327,83 +246,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: Colors.common.black,
         fontWeight: 'bold',
-    },
-    logButton: {
-        alignSelf: 'center',
-        backgroundColor: Colors.button.primary,
-        borderRadius: 10,
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-        marginTop: 10,
-    },
-    logButtonText: {
-        fontSize: 16,
-        color: Colors.common.white,
-        fontWeight: '600',
-    },
-    modalContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    },
-    modalContent: {
-        width: 100,
-        height: 100,
-        backgroundColor: Colors.common.white,
-        borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-    },
-    loadingText: {
-        marginTop: 10,
-        fontSize: 16,
-        color: Colors.text.primary,
-        fontFamily: FONT.SEMI_BOLD,
-    },
-    bottomSheet: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: 300, // Adjust height as needed
-        backgroundColor: '#fff',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        padding: 20,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: -2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    sheetTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        textAlign: 'center',
-    },
-    sheetText: {
-        fontSize: 16,
-        marginBottom: 20,
-        textAlign: 'center',
-    },
-    closeButton: {
-        backgroundColor: '#007BFF',
-        padding: 15,
-        borderRadius: 8,
-        alignItems: 'center',
-    },
-    closeButtonText: {
-        fontSize: 16,
-        color: '#fff',
-        fontWeight: 'bold',
-    },
-    closeIconContainer: {
-        position: 'absolute',
-        top: 10, // Adjust for desired spacing
-        right: 10, // Adjust for desired spacing
-        zIndex: -10, // Ensure it appears above other elements
-    },
+    }
+
 });

@@ -1,4 +1,5 @@
 import { ImageSourcePropType, TextStyle, ViewStyle } from "react-native";
+import RBSheet from "react-native-raw-bottom-sheet";
 
 interface OnboardingItemProps {
     item: {
@@ -16,5 +17,19 @@ interface CustomButtonProps {
     loading?: boolean;
     disabled?: boolean;
 }
+interface LoadingModalProps {
+    visible: boolean;
+}
+interface BottomSheetProps {
+    refRBSheet: React.RefObject<RBSheet>;
+    onAgree: () => void;
+}
+interface VerificationOptionProps {
+    icon: ImageSourcePropType;
+    label: string;
+    onPress: () => void;
+}
 
-export type { OnboardingItemProps, CustomButtonProps };
+
+
+export type { OnboardingItemProps, CustomButtonProps, LoadingModalProps, BottomSheetProps, VerificationOptionProps };
