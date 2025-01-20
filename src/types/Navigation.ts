@@ -14,5 +14,5 @@ export type RootStackParamList = {
   nameAndEmail: undefined;
   openLocation: undefined;
   preHome: undefined;
-  homeTabs:undefined;
+  btmTabs:undefined;
 };

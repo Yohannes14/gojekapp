@@ -41,5 +41,23 @@ interface InputFieldProps {
     errorMessage?: string;
 };
 
+interface ServiceItemProps {
+    item: {
+        id: string;
+        name: string;
+        icon: ImageSourcePropType;
+        color: string;
+    };
+}
 
-export type { OnboardingItemProps, CustomButtonProps, LoadingModalProps, BottomSheetProps, VerificationOptionProps, InputFieldProps }
+
+export type
+{
+    OnboardingItemProps,
+    CustomButtonProps,
+    LoadingModalProps,
+    BottomSheetProps,
+    VerificationOptionProps,
+    InputFieldProps,
+    ServiceItemProps
+}

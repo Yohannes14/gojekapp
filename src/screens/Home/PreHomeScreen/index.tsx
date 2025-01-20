@@ -14,7 +14,7 @@ import { FONT } from '@/utils/fonts';
 import NotificationModal from '@/components/NotificationModal';
 import { Images } from '@/assets/images';
 import { navigate } from '@/navigation/RootNavigation';
-import { HOME_TABS } from '@/navigation/constants';
+import { BTM_TABS } from '@/navigation/constants';
 
 
 export default function PreHomeScreen() {
@@ -108,7 +108,7 @@ export default function PreHomeScreen() {
             {/* Skip Button */}
             <View style={styles.skipButtonContainer}>
                 <CustomButton
-                    onPress={() => navigate(HOME_TABS)}
+                    onPress={() => navigate(BTM_TABS)}
                     style={styles.customButton}
                     buttonStyle={styles.customButtonText}
                     title="Skip the treat"
@@ -142,7 +142,7 @@ export default function PreHomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.button.disabled,
+        backgroundColor: Colors.background.secondary,
     },
     headerContainer: {
         height: 220,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     },
     curvedSection: {
         flex: 1,
-        backgroundColor: Colors.button.disabled,
+        backgroundColor: Colors.background.secondary,
         borderTopLeftRadius: 54,
         borderTopRightRadius: 54,
         marginTop: -40,

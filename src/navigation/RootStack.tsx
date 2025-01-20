@@ -1,6 +1,6 @@
 // RootStack.tsx or Navigator.tsx
 import React from 'react';
-import { HOME_TABS, LOCATION, NAME_EMAIL, ONBOARDING, PRE_HOME, REGISTER, VERIFICATION_METHOD, VERIFICATION_WITH_OTP } from './constants';  // Import the constants
+import { BTM_TABS, LOCATION, NAME_EMAIL, ONBOARDING, PRE_HOME, REGISTER, VERIFICATION_METHOD, VERIFICATION_WITH_OTP } from './constants';  // Import the constants
 import { RootStackParamList } from '@/types/Navigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '@/screens/Home/HomeScreen';
@@ -11,7 +11,7 @@ import VerficationWithOptScreen from '@/screens/Verification/VerificationWithOTP
 import NameAndEMailFormScreen from '@/screens/NameAndEmailIForm';
 import OpenLocation from '@/screens/Location';
 import PreHomeScreen from '@/screens/Home/PreHomeScreen';
-import HomeTabs from './BottomTabNavigator';
+import BtmTabs from './BottomTabNavigator';
 
 const RootStack = (): React.ReactElement => {
     const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -25,7 +25,7 @@ const RootStack = (): React.ReactElement => {
             <Stack.Screen name={NAME_EMAIL} component={NameAndEMailFormScreen} />
             <Stack.Screen name={LOCATION} component={OpenLocation} /> */}
             <Stack.Screen name={PRE_HOME} component={PreHomeScreen}/>
-            <Stack.Screen name={HOME_TABS} component={HomeTabs}/>
+            <Stack.Screen name={BTM_TABS} component={BtmTabs}/>
         </Stack.Navigator>
     );
 };

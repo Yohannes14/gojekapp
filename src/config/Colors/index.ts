@@ -19,12 +19,15 @@ export const Colors = {
     white: "#ffffff",
   },
   background: {
+    primary: "#01860c", 
+    secondary: "#fdfbfc", // "#f0edf1",
     teritiary: "#fdfbfc",
   },
   border: "#faf8f9",
 
   success: "#09D059",
   error: "#FF0000",
+  iconColor:"#00acd6",
 
 };
 

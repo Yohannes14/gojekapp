@@ -1,25 +1,24 @@
-// HomeTabs.tsx
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '@/screens/Home/HomeScreen';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { AuthStackParamList } from '@/types/Navigation';
 import ChatScreen from '@/screens/Chat';
 import ActvityScreen from '@/screens/Activity';
 import PromoScreen from '@/screens/Promo';
+import { Foundation, FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { AuthStackParamList } from '@/types/Navigation';
 import { ACTIVITY, CHAT, HOME, PROMO } from './constants';
 import { Colors } from '@/config/Colors';
+import TabOptions from '@/components/TabOptions';
 
 const Tab = createBottomTabNavigator<AuthStackParamList>();
 
-const HomeTabs = (): React.ReactElement => {
+
+const BtmTabs = (): React.ReactElement => {
     return (
         <Tab.Navigator
             screenOptions={{
                 headerShown: false,
-                tabBarStyle: { borderWidth:0},
+                tabBarStyle: { borderWidth: 0, backgroundColor: Colors.background.secondary },
                 tabBarActiveTintColor: Colors.button.primary,
                 tabBarInactiveTintColor: Colors.common.black,
             }}
@@ -28,50 +27,31 @@ const HomeTabs = (): React.ReactElement => {
             <Tab.Screen
                 name={HOME}
                 component={HomeScreen}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="home-outline" size={size} color={color} />
-                    ),
-                }}
+                options={TabOptions('Home', Foundation, 'home')}
             />
 
             {/* Promo Tab */}
             <Tab.Screen
                 name={PROMO}
                 component={PromoScreen}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome name="gift" size={size} color={color} />
-                    ),
-                    title: 'Promo',
-                }}
+                options={TabOptions('Promo', FontAwesome, 'gift')}
             />
 
             {/* Activity Tab */}
             <Tab.Screen
                 name={ACTIVITY}
                 component={ActvityScreen}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <MaterialIcons name="history" size={size} color={color} />
-                    ),
-                    title: 'Activity',
-                }}
+                options={TabOptions('Activity', MaterialIcons, 'history')}
             />
 
             {/* Chat Tab */}
             <Tab.Screen
                 name={CHAT}
                 component={ChatScreen}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="chatbubble-outline" size={size} color={color} />
-                    ),
-                    title: 'Chat',
-                }}
+                options={TabOptions('Chat', MaterialIcons, 'chat')}
             />
         </Tab.Navigator>
     );
 };
 
-export default HomeTabs;
+export default BtmTabs;

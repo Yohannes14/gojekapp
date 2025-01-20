@@ -12,4 +12,4 @@ export const HOME = "home";
 export const CHAT = "chat";
 export const ACTIVITY = "activity";
 export const PROMO = "promo"
-export const HOME_TABS ="homeTabs"
+export const BTM_TABS ="btmTabs" 
