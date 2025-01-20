@@ -50,6 +50,16 @@ interface ServiceItemProps {
     };
 }
 
+interface PromoItemProps {
+    item: {
+        id: string;
+        badge: string;
+        text: string;
+        color: string;
+        image: ImageSourcePropType;
+    };
+}
+
 
 export type
 {
@@ -59,5 +69,6 @@ export type
     BottomSheetProps,
     VerificationOptionProps,
     InputFieldProps,
-    ServiceItemProps
+    ServiceItemProps,
+    PromoItemProps
 }

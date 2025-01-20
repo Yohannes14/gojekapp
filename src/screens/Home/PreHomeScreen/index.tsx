@@ -5,16 +5,15 @@ import {
     StyleSheet,
     Image,
     FlatList,
-    Alert,
 } from 'react-native';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Colors } from '@/config/Colors';
 import CustomButton from '@/components/Button/CustomButton';
-import { FONT } from '@/utils/fonts';
 import NotificationModal from '@/components/NotificationModal';
 import { Images } from '@/assets/images';
 import { navigate } from '@/navigation/RootNavigation';
 import { BTM_TABS } from '@/navigation/constants';
+import PromoItem from '@/components/PromoItem';
+import { promoData } from '@/utils/data/PromoData';
 
 
 export default function PreHomeScreen() {
@@ -29,57 +28,6 @@ export default function PreHomeScreen() {
     const handleTrackPermission = (allow: boolean) => {
         setTrackModalVisible(false);
     };
-
-
-    const promoData = [
-        {
-            id: '1',
-            badge: 'Cashback up to 50%',
-            text: 'Get food',
-            color: Colors.error,
-            image: 'https://via.placeholder.com/100',
-        },
-        {
-            id: '2',
-            badge: 'Up to 85% off',
-            text: 'Book a ride',
-            color: Colors.button.primary,
-            image: 'https://via.placeholder.com/100',
-        },
-        {
-            id: '3',
-            badge: 'Starts at $5',
-            text: 'Book a car',
-            color: Colors.button.primary,
-            image: 'https://via.placeholder.com/100',
-        },
-        {
-            id: '4',
-            badge: 'FREE delivery on food',
-            text: 'Budget eats',
-            color: Colors.error,
-            image: 'https://via.placeholder.com/100',
-        },
-    ];
-
-    const renderPromoCard = ({ item }: any) => (
-        <View style={styles.card}>
-            <Text style={styles.cardBadge}>
-                {item.badge}
-            </Text>
-            <Image style={styles.cardImage} source={Images.payment} />
-            <View style={styles.cardFooter}>
-                <Text style={styles.cardText}>{item.text}</Text>
-                <View style={[styles.cardIconContainer, { backgroundColor: item.color }]}>
-                    <FontAwesome
-                        name="arrow-right"
-                        size={16}
-                        color={Colors.common.white}
-                    />
-                </View>
-            </View>
-        </View>
-    );
 
     return (
         <View style={styles.container}>
@@ -98,7 +46,7 @@ export default function PreHomeScreen() {
                 {/* Promo Cards */}
                 <FlatList
                     data={promoData}
-                    renderItem={renderPromoCard}
+                    renderItem={({item})=><PromoItem item={item}/>}
                     keyExtractor={(item) => item.id}
                     contentContainerStyle={styles.cardContainer}
                     numColumns={2} // Display in 2 columns
@@ -174,53 +122,6 @@ const styles = StyleSheet.create({
     },
     cardContainer: {
         padding: 16,
-    },
-    card: {
-        backgroundColor: Colors.common.white,
-        borderRadius: 10,
-        margin: 8,
-        flex: 1,
-        paddingVertical: 14,
-        shadowColor: Colors.common.grey,
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        shadowOffset: { width: 0, height: 2 },
-        elevation: 2,
-    },
-    cardBadge: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        color: Colors.common.white,
-        backgroundColor: Colors.common.black,
-        padding: 4,
-        borderRadius: 5,
-        marginBottom: 8,
-        alignSelf: 'flex-start',
-    },
-    cardImage: {
-       width: '80%',
-        height: 100,
-        borderRadius: 10,
-        marginBottom: 10,
-        alignSelf:'flex-start'
-    },
-    cardFooter: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    cardText: {
-        fontSize: 14,
-        fontFamily: FONT.SEMI_BOLD,
-        color: Colors.common.black,
-        paddingLeft: 4,
-    },
-    cardIconContainer: {
-        padding: 6,
-        borderRadius: 20,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: 4,
     },
     skipButtonContainer: {
         marginHorizontal: 24,

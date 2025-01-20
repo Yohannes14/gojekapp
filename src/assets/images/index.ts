@@ -15,5 +15,9 @@ export const Images = {
     goMart:require('@/assets/images/goMart.png'),
     goShop:require('@/assets/images/goShop.png'),
     more:require('@/assets/images/more.png'),
+    car:require('@/assets/images/car.png'),
+    ride:require('@/assets/images/ride.png'),
+    food:require('@/assets/images/food.png'),
+    budget:require('@/assets/images/budget.png')
 
 }

@@ -18,12 +18,12 @@ const RootStack = (): React.ReactElement => {
 
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            {/* <Stack.Screen name={ONBOARDING} component={OnBoardingScreen} />
+            <Stack.Screen name={ONBOARDING} component={OnBoardingScreen} />
             <Stack.Screen name={REGISTER} component={SignUpScreen} />
             <Stack.Screen name={VERIFICATION_METHOD} component={VerificationMethodScreen} />
             <Stack.Screen name={VERIFICATION_WITH_OTP} component={VerficationWithOptScreen} />
             <Stack.Screen name={NAME_EMAIL} component={NameAndEMailFormScreen} />
-            <Stack.Screen name={LOCATION} component={OpenLocation} /> */}
+            <Stack.Screen name={LOCATION} component={OpenLocation} />
             <Stack.Screen name={PRE_HOME} component={PreHomeScreen}/>
             <Stack.Screen name={BTM_TABS} component={BtmTabs}/>
         </Stack.Navigator>

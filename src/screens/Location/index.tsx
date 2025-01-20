@@ -19,7 +19,7 @@ export default function OpenLocation() {
 
     const handleButtonClick = () => {
         setButtonClicked(true);
-        setTimeout(() => navigate(PRE_HOME), 2000);
+        setTimeout(() => navigate(PRE_HOME), 1000);
     };
 
     return (
