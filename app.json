@@ -8,9 +8,9 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./src/assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./src/assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#fdfbfc"
     },
     "ios": {
       "supportsTablet": true
@@ -18,14 +18,20 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#fdfbfc"
+      },
+      "package": "com.awakilo.gojekApp"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "abfa602f-746b-4737-b27d-99c617f63c4b"
+      }
+    }
   }
 }

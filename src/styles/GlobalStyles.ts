@@ -9,6 +9,6 @@ export const globalStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#FFFFFF",
         paddingHorizontal: 20,
-        paddingVertical: 30,
+        paddingVertical: 10,
     },
 })

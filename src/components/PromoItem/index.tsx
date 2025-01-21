@@ -22,7 +22,7 @@ const PromoItem: React.FC<PromoItemProps> = ({ item }) => {
                 <View style={[styles.cardIconContainer, { backgroundColor: item.color }]}>
                     <FontAwesome
                         name="arrow-right"
-                        size={16}
+                        size={12}
                         color={Colors.common.white}
                     />
                 </View>
@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
         paddingLeft: 4,
     },
     cardIconContainer: {
-        padding: 6,
-        borderRadius: 20,
+        padding: 4,
+        borderRadius:12,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 4,

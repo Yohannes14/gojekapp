@@ -47,6 +47,7 @@ interface ServiceItemProps {
         name: string;
         icon: ImageSourcePropType;
         color: string;
+        hasBadge: boolean;
     };
 }
 
